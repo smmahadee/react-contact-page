@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { formAction } from '../Store/index';
+import { formAction, contactAction } from '../Store/index';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import ShowContact from './ShowContact';
@@ -10,6 +10,7 @@ export default function ContactLists() {
   const [filterValue, setFilterValue] = useState(null);
   const dispatch = useDispatch();
   const addContactHandler = () => dispatch(formAction.openForm());
+  const deleteContactHandler = () => dispatch(contactAction.deleteAllContact());
 
   const changeHandler = e => {
     const value = e.target.value;
@@ -35,7 +36,7 @@ export default function ContactLists() {
           <button className='btn bg-primary-color' onClick={addContactHandler}>
             Add Contact
           </button>
-          <button className='btn bg-gray-300'>Export</button>
+          <button className='btn bg-gray-300' onClick = {deleteContactHandler}>Delete All</button>
         </div>
       </nav>
 

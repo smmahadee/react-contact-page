@@ -12,6 +12,10 @@ export const fetchContactData = async () => {
   return data;
 };
 
+export const deleteContact = async () => {
+  db.collection('users').delete();
+}
+
 // this function customize contact data
 export const customizedData = data => {
   data.sort((a, b) => {

@@ -1,5 +1,5 @@
 import { configureStore, createSlice, current } from '@reduxjs/toolkit';
-import { sendContactData } from '../globals';
+import { sendContactData, deleteContact } from '../globals';
 import { customizedData } from '../globals';
 
 // Add contact form related state
@@ -32,6 +32,10 @@ const contactSlice = createSlice({
     replaceContact(state, { payload }) {
       const data = customizedData(payload);
       data.forEach(data => state.push(data));
+    },
+    deleteAllContact() {
+      deleteContact();
+      return [];
     },
   },
 });
