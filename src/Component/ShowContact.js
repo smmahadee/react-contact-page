@@ -14,12 +14,6 @@ export default function ShowContact({ filterValue }) {
     }
   });
 
-  // get random image
-  const imgSrc = [];
-  contacts.forEach((_, i) => {
-    imgSrc.push(`https://randomuser.me/api/portraits/med/men/${i + 1}.jpg`);
-  });
-
   // created all contacts element
   const contactData = contacts.map((el, i) => {
     const { isLetter, firstName, lastName, phone } = el;
@@ -30,12 +24,13 @@ export default function ShowContact({ filterValue }) {
         </div>
       );
     }
+    
     return (
       <div
         key={i}
         className='mx-3 my-1 bg-white rounded px-2 flex space-x-3 items-center py-1'
       >
-        <img className='rounded-full h-8' src={imgSrc[i]} alt='' />
+        <img className='rounded-full h-8' src={el.imgSrc} alt='' />
         <div>
           <h4 className='text-black'>{firstName + ' ' + lastName}</h4>
           <p className='text-xs'>{phone}</p>

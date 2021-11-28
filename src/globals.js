@@ -23,6 +23,13 @@ export const customizedData = data => {
     }
     return null;
   });
+
+  // get random image
+  const imgSrc = [];
+  data.forEach((_, i) => {
+    imgSrc.push(`https://randomuser.me/api/portraits/med/men/${i + 1}.jpg`);
+  });
+
   const customizedData = data.reduce(
     (acc, el, i, arr) => {
       let currentChar = el.firstName.toUpperCase().substr(0, 1);
@@ -32,7 +39,11 @@ export const customizedData = data => {
         acc[1] = currentChar;
       }
       if (el.firstName.length > 2) {
-        acc[0].push({ ...el, isLetter: false });
+
+   
+      
+      
+        acc[0].push({ ...el, isLetter: false, imgSrc: imgSrc[i] });
       }
       return acc;
     },
